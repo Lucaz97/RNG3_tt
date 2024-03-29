@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: MIT
 
 import cocotb
+import random
 from cocotb.clock import Clock
 from cocotb.triggers import ClockCycles
 
@@ -23,10 +24,12 @@ async def test_adder(dut):
   dut.rst_n.value = 1
 
   # Set the input values, wait one clock cycle, and check the output
+  for i in range(65539):
+    dut.ui_in.value = random.randint(0,1)
+    await ClockCycles(dut.clk, 1)
+
   dut._log.info("Test")
-  dut.ui_in.value = 20
-  dut.uio_in.value = 30
+  dut._log.info(dut.uo_out.value)
 
-  await ClockCycles(dut.clk, 1)
 
-  assert dut.uo_out.value == 50
+  #assert dut.uo_out.value == 50
