@@ -16,17 +16,7 @@ module tt_um_rng_3_lucaz97 (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-    //   approx approx_inst (
-    //   .clk(clk),
-    //   .rst_n(rst_n),
-    //   .is_random_rsc_dat(uo_out[0]),
-    //   .is_random_triosy_lz(),
-    //   .valid_rsc_dat(uo_out[1]),
-    //   .valid_triosy_lz(),
-    //   .epsilon_rsc_dat(ui_in[0]),
-    //   .epsilon_triosy_lz()
-    // );
-       excursions excursions_inst (
+      approx approx_inst (
       .clk(clk),
       .rst_n(rst_n),
       .is_random_rsc_dat(uo_out[0]),
@@ -36,6 +26,16 @@ module tt_um_rng_3_lucaz97 (
       .epsilon_rsc_dat(ui_in[0]),
       .epsilon_triosy_lz()
     );
+    //    excursions excursions_inst (
+    //   .clk(clk),
+    //   .rst_n(rst_n),
+    //   .is_random_rsc_dat(uo_out[0]),
+    //   .is_random_triosy_lz(),
+    //   .valid_rsc_dat(uo_out[1]),
+    //   .valid_triosy_lz(),
+    //   .epsilon_rsc_dat(ui_in[0]),
+    //   .epsilon_triosy_lz()
+    // );
   // All output pins must be assigned. If not used, assign to 0.
   assign uo_out[7:2] = 0;  // Example: ou_out is the sum of ui_in and uio_in
   assign uio_out = 0;
